@@ -1,4 +1,5 @@
 import socket
+import time
 import json
 
 # IP and port to listen on
@@ -15,7 +16,7 @@ print(f"UDP server listening on {SERVER_IP}:{SERVER_PORT}")
 
 def get_json_data():
     # Receive data from the UDP client
-    data = sock.recvfrom(1024)
+    data = sock.recvfrom(1024)[0]
 
     # Convert the received data to a string and split it by semicolon
     data_str = data.decode()
@@ -38,4 +39,9 @@ def get_json_data():
 
     # print(f"Received data from {addr}:")
     # print(json_data)
+    
     return json_data
+
+# while True:
+#     time.sleep(1e-3)
+#     get_json_data()
